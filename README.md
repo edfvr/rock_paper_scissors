@@ -1,7 +1,10 @@
 # Rock Paper Scissors
+A simple game
+
+*rock smashes scissors, paper covers rock, scissors cuts paper*
 
 ## Pseudocode
-1. take user input and store in a variable
+1. Take user input and store.
 2. Make a list of moves. i.e `["rock", "paper", "scissors"]`
 3. Use `random.choice()` on `cpu_move` so that the computer selects moves randomly.
     - import `random` to be able to use `random.choice()`
@@ -14,3 +17,4 @@
         else if cpu = scissors, cpu wins
     - if player = scissors and cpu = paper, player wins
         else if cpu = rock, cpu wins
+6. Loop game, asking user if to continue after every round
