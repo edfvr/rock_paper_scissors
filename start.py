@@ -6,6 +6,12 @@ class Action(IntEnum):
         Paper = 1
         Scissors = 2
 
+victories = {
+        Action.Rock: [Action.Scissors],
+        Action.Paper: [Action.Rock],
+        Action.Scissors: [Action.Paper]
+    }
+
 def get_player_choice():
     arsenal = [f"{move.name}[{move.value}]" for move in Action]
     move_list_str = ", ".join(arsenal)
@@ -20,23 +26,13 @@ def get_cpu_choice():
 
 # Conditions for winning
 def determine_winner(player_move, cpu_move):
+    defeats = victories[player_move]
     if player_move == cpu_move:
-        print(f"We both selected {player_move}. Tie!")
-
-    elif player_move == Action.Rock and cpu_move == Action.Scissors:
-        print("Rock smashes scissors! You win!")
-    elif player_move == Action.Rock and cpu_move == Action.Paper:
-        print("Paper covers rock! SIT DOWN!! I win")
-
-    elif player_move == Action.Paper and cpu_move == Action.Rock:
-        print("Paper covers rock! You win!")
-    elif player_move == Action.Paper and cpu_move == Action.Scissors:
-        print("Scissors cuts paper! HAHA I win!")
-
-    elif player_move == Action.Scissors and cpu_move == Action.Paper:
-        print("Scissors cuts paper! You win you lucky ...!")
-    elif player_move == Action.Scissors and cpu_move == Action.Rock:
-        print('Rock smashes scissors! I win! I "trashes" you!')
+        print(f"Both players selected {player_move.name}. Tie!")
+    elif cpu_move in defeats:
+        print(f"{player_move.name} beats {cpu_move.name}! You win!")
+    else:
+        print(f"{cpu_move.name} beats {player_move.name}! SIT DOWN! You lose!")
 
 while True:
     try:
@@ -54,7 +50,3 @@ while True:
         break
     if replay == 'y':
         continue
-
-get_player_choice()
-get_cpu_choice()
-determine_winner(Action.Rock, Action.Scissors)
