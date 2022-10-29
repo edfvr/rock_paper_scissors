@@ -2,9 +2,9 @@ import random
 from enum import IntEnum
 
 class Action(IntEnum):
-        Rock = 0
-        Paper = 1
-        Scissors = 2
+    Rock = 0
+    Paper = 1
+    Scissors = 2
 
 victories = {
         Action.Rock: [Action.Scissors],
