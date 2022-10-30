@@ -1,27 +1,27 @@
 import random
 from enum import IntEnum
 
-class Action(IntEnum):
+class Move(IntEnum):
     Rock = 0
     Paper = 1
     Scissors = 2
 
 victories = {
-        Action.Rock: [Action.Scissors],
-        Action.Paper: [Action.Rock],
-        Action.Scissors: [Action.Paper]
+        Move.Rock: [Move.Scissors],
+        Move.Paper: [Move.Rock],
+        Move.Scissors: [Move.Paper]
     }
 
 def get_player_choice():
-    arsenal = [f"{move.name}[{move.value}]" for move in Action]
+    arsenal = [f"{move.name}[{move.value}]" for move in Move]
     move_list_str = ", ".join(arsenal)
-    choice = int(input(f"Rock Paper Scissors ({move_list_str})?"))
-    move = Action(choice)
+    choice = int(input(f"Rock Paper Scissors? ({move_list_str})"))
+    move = Move(choice)
     return move
 
 def get_cpu_choice():
-    choice = random.randint(0, len(Action) - 1)
-    move = Action(choice)
+    choice = random.randint(0, len(Move) - 1)
+    move = Move(choice)
     return move
 
 # Conditions for winning
@@ -38,7 +38,7 @@ while True:
     try:
         player_move = get_player_choice()
     except ValueError as e:
-        range_str = f"[0, {len(Action) - 1}]"
+        range_str = f"[0, {len(Move) - 1}]"
         print(f"Enter a value in range")
         continue
     
