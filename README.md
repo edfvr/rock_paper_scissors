@@ -1,7 +1,10 @@
 # Rock Paper Scissors
-A simple game
+Rock Paper Scissors on the command line
 
 *rock smashes scissors, paper covers rock, scissors cuts paper*
+
+## Visual demonstration
+![Rock Paper Scissors image](rps.png)
 
 ## Pseudocode
 - ### Take user input and store.
